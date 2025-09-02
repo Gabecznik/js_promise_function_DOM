@@ -2,13 +2,15 @@
 
 function waitFor(element, eventName) {
   return new Promise((resolve) => {
-    // tutaj mówisz: "słuchaj, aż wydarzy się event"
-    element.addEventListener(eventName, () => {
-      // kiedy event się stanie → wywołaj resolve
-      resolve(
-        `It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`,
-      );
-    });
+    element.addEventListener(
+      eventName,
+      () => {
+        resolve(
+          `It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`,
+        );
+      },
+      { once: true },
+    );
   });
 }
 
